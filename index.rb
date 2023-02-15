@@ -2,10 +2,10 @@ class TreeNode
   attr_accessor :value, :left, :right
 
   def initialize(value)
-	  @value = value
-		@left = nil
-		@right = nil
-	end
+    @value = value
+    @left = nil
+    @right = nil
+  end
 end
 
 class BST
@@ -14,7 +14,7 @@ class BST
   def initialize()
     @root = nil
     @size = 0
-	end
+  end
   
   def input_elements()
     s = gets.chomp
@@ -33,7 +33,7 @@ class BST
     @root = insert_util(value)
   end
 
-	def insert_util(root = self.root, value)
+  def insert_util(root = self.root, value)
     if root == nil
       root = TreeNode.new(value)
     elsif root.value < value
@@ -41,7 +41,7 @@ class BST
     else
       root.left = insert_util(root.left, value)
     end
-		return root
+    return root
   end
 
   def delete(value)
@@ -80,18 +80,18 @@ class BST
   end
 
   def preorder(node = self.root)
-		return nil if node.nil?
-		puts node.value
-		preorder(node.left)
-		preorder(node.right)
+    return nil if node.nil?
+    puts node.value
+    preorder(node.left)
+    preorder(node.right)
   end
 
-	def postorder(node = self.root)
-		return nil if node.nil?
-		postorder(node.left)
-		postorder(node.right)
-		puts node.value
-	end
+  def postorder(node = self.root)
+    return nil if node.nil?
+    postorder(node.left)
+    postorder(node.right)
+    puts node.value
+  end
 
   def levelorder(node = self.root)
     return nil if node.nil?
@@ -119,50 +119,50 @@ class BST
   end
 
 
-	def find_max(node = self.root)
-		if node == nil
-			return nil
-		elsif node.right == nil
-			return node
-		else
-			return find_max(node.right)
-		end
-	end
+  def find_max(node = self.root)
+    if node == nil
+      return nil
+    elsif node.right == nil
+      return node
+    else
+      return find_max(node.right)
+    end
+  end
 
-	def find_min(node = self.root)
-		if node == nil
-			return nil
-		elsif node.left == nil
-			return node
-		else
-			return find_min(node.left)
-		end
-	end
+  def find_min(node = self.root)
+    if node == nil
+      return nil
+    elsif node.left == nil
+      return node
+    else
+      return find_min(node.left)
+    end
+  end
 
-	def search(node = self.root, value)
-		if node == nil
-			return false
-		elsif node.value == value
-			return true
-		elsif node.value < value
-			return search(node.right, value)
-		else
-			return search(node.left, value)
-		end
-	end
+  def search(node = self.root, value)
+    if node == nil
+      return false
+    elsif node.value == value
+      return true
+    elsif node.value < value
+      return search(node.right, value)
+    else
+      return search(node.left, value)
+    end
+  end
 
 	
 	
-	def print_path(node = self.root, path = [])
-		return nil  if node.nil?
+  def print_path(node = self.root, path = [])
+    return nil  if node.nil?
     path.push(node.value)
-		if node.left == nil || node.right == nil
-			for i in path
-				print i
+    if node.left == nil || node.right == nil
+      for i in path
+        print i
         print ' '
-			end
+      end
       puts
-		end
+    end
     print_path(node.left, path)
     print_path(node.right, path)
     path.pop()
@@ -172,7 +172,7 @@ class BST
     File.foreach(file) {
       |line| self.insert(line.to_i)
     }
-	end
+  end
 
   def save_to_file(file)
     tempString = self.levelorder()
@@ -193,15 +193,13 @@ while true do
    puts  "9. Search a Element"
    puts  "10. Remove a Element"
    puts  "11. Print all Paths"
-   puts  " Enter 'quit' to Exit"
+   puts  "Enter 'quit' to Exit"
    
    input = gets.chomp
-
    if input == "quit"
      node.save_to_file('fileOut.txt')
      break
    end
-
    input = input.to_i
 
    case input
